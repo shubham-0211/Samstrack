@@ -1,0 +1,40 @@
+version: "3.3"
+services:
+  backend:
+    image: shubhamghongade/samstrackapi
+    ports:
+      - "8091:8091" # Expose the port
+    networks:
+      - springboot-db-net
+    depends_on:
+      - mysqldb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/attendance
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=Shubham@123
+    volumes:
+      - /data/springboot-app:/app
+
+  frontend:
+    image: shubhamghongade/samstrackui
+    ports:
+      - "4200:4200" # Expose the port
+    networks:
+      - springboot-db-net
+    depends_on:
+      - backend
+    volumes:
+      - /data/springboot-app:/app
+
+  mysqldb:
+    image: mysql:latest
+    networks:
+      - springboot-db-net
+    environment:
+      - MYSQL_ROOT_PASSWORD=Shubham@123
+    volumes:
+      - /data/mysql:/var/lib/mysql
+
+networks:
+  springboot-db-net:
+    driver: bridge

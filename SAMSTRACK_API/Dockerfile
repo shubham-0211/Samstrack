@@ -10,8 +10,8 @@ WORKDIR /usr/app
 # Copy the JAR file from the 'target' directory to the container
 COPY target/SamsTrack-0.0.1-SNAPSHOT.jar SamsTrack-0.0.1-SNAPSHOT.jar
 
-# Expose port 8081 so the application can be accessed externally
-EXPOSE 8081
+# Expose port 8091 so the application can be accessed externally
+EXPOSE 8091
 
 # Command to run the application when the container starts
 CMD ["java", "-jar", "SamsTrack-0.0.1-SNAPSHOT.jar"]
