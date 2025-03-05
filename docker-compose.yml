@@ -8,10 +8,6 @@ services:
       - springboot-db-net
     depends_on:
       - mysqldb
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysqldb:3306/attendance
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=Shubham@123
     volumes:
       - /data/springboot-app:/app
 
